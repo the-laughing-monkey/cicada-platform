@@ -2,7 +2,9 @@
 
 @laugh1ng.m0nk3y - @jade.rabb1t.23 - @ox.head.826
 
-[cicada [AT] writeme.com]
+[cicada [AT] iamcicada.com]
+
+Version 2016.28.11.GA.003
 
 Cicada is a revolutionary distributed direct democracy (DDD) platform that will unleash the true power of the people, allowing tomorrow&#39;s Founding Fathers to run an entire nation from the palm of their hand. It&#39;s powered by a radical new blockchain that&#39;s completely immune to centralization and pays you to secure it with a practical Universal Basic Income.
 
