@@ -353,7 +353,7 @@ In the Direct Democracy system, a voting token is taken from an anonymous pool o
 
 # Sub/IDs
 
-A crucial component to the privacy of the system is that it allows the creation of sub-IDs. **These sub-IDs (SIDs), linked to a HUID/SID, enable people to join or leave a group.** They could be an ID that marks you as a citizen or an employee or as one of the Nielson raters, or as a game player in a MMORP. **These sub-IDs also provide anonymization or unlinkability through blind signatures and/or zero-knowledge proofs. The signature is a single piece of secret data that can prove that someone&#39;s primary ID is linked to the sub-ID without revealing the primary ID. The sub-IDs should also allow for RBAC (role-based access control) to personal data**. For example, a sub-ID may grant access to only a phone number, name, and email address but not an HUID or SSN. The sub-IDs can also be generated with zero privileges, allowing access to none of the user&#39;s information, but still allowing the user&#39;s identity to be verified via an embedded secret that can be verified via challenge response. So an application could demand that a user prove who they say they are and the client could then reveal that they know the secret information via a prompt, proving their identity but not revealing their PII. The system may also choose to use  [non-interactive zero-knowledge proofs (NIZK)](https://people.eecs.berkeley.edu/~sanjamg/mc/scribe/lec10.pdf), which prove ownership/identity without even having to prompt the user.
+A crucial component to the privacy of the system is that it allows the creation of sub-IDs. **These sub-IDs (SIDs), linked to a HUID/SID, enable people to join or leave a group.** They could be an ID that marks you as a citizen or an employee or as one of the Nielson raters, or as a game player in an MMORPG. **These sub-IDs also provide anonymization or unlinkability through blind signatures and/or zero-knowledge proofs. The signature is a single piece of secret data that can prove that someone&#39;s primary ID is linked to the sub-ID without revealing the primary ID. The sub-IDs should also allow for RBAC (role-based access control) to personal data**. For example, a sub-ID may grant access to only a phone number, name, and email address but not an HUID or SSN. The sub-IDs can also be generated with zero privileges, allowing access to none of the user&#39;s information, but still allowing the user&#39;s identity to be verified via an embedded secret that can be verified via challenge response. So an application could demand that a user prove who they say they are and the client could then reveal that they know the secret information via a prompt, proving their identity but not revealing their PII. The system may also choose to use  [non-interactive zero-knowledge proofs (NIZK)](https://people.eecs.berkeley.edu/~sanjamg/mc/scribe/lec10.pdf), which prove ownership/identity without even having to prompt the user.
 
 **The system will also require single-use sub-IDs (SUSIDs). For example, to link an HUID to a NodeID (which IDs a client to the network) while simultaneously protecting the identity of the user and preventing that user from creating multiple nodes for themselves, we create a protocol for single use sub-IDs that, once generated, cannot be generated again without revoking the original HUID and banning the original NodeID on the network, rendering the client unusable. **A flag is set in the HUID blockchain that this single-purpose sub-ID slot is filled with a Boolean yes/no. If the flag is marked &quot;no,&quot; the program will not allow the creation of a new sub-ID. In the event of compromise, the sub-ID can be deleted and generated again. This sub-ID presents some serious design challenges and the authors may not have worked out all major attacks against it, but the general concept should allow for solving the unique ID + anonymity problem if all attacks are considered carefully and appropriate countermeasures are created from the beginning.
 
@@ -423,7 +423,7 @@ Consensus is a method for determining agreement among the various nodes about wh
 
 **This 1-to-1 ratio makes the protocol essentially evenly distributed forever, with no one pool of servers or people controlling the power of the platform. This essentially eliminates the 50% problem**.  **It also has the added benefit of creating a built-in ** [**Universal Basic Income**](https://en.wikipedia.org/wiki/Basic_income)** (UBI) as a reward for participation in the system.**
 
-How does it work? It builds on the idea of the distributed hash table of the  [Kademlia](http://xlattice.sourceforge.net/components/protocol/kademlia/specs.html) P2P network, popularized by 3rd gen P2P systems like BitTorrent. Each client/server is assigned a NodeID stored in the distributed hash table of all systems on the network. Now lets take something like the Bitcoin system, which updates its blockchain every 10 minutes with a new block, which we will call the &quot;block epoch.&quot; During those 10 minutes, transactions are broadcast to the network and miners gather them up into  [Merkle Trees](https://bitcoin.org/en/glossary/merkle-tree) and then compete against each to to solve a Proof of Work problem to win and release newly created coins and collect all the transaction fees from the last block epoch.
+How does it work? It builds on the idea of the distributed hash table of the  [Kademlia](http://xlattice.sourceforge.net/components/protocol/kademlia/specs.html) P2P network, popularized by 3rd gen P2P systems like [BitTorrent](http://www.bittorrent.com/). Each client/server is assigned a NodeID stored in the distributed hash table of all systems on the network. Now lets take something like the Bitcoin system, which updates its blockchain every 10 minutes with a new block, which we will call the &quot;block epoch.&quot; During those 10 minutes, transactions are broadcast to the network and miners gather them up into  [Merkle Trees](https://bitcoin.org/en/glossary/merkle-tree) and then compete against each to to solve a Proof of Work problem to win and release newly created coins and collect all the transaction fees from the last block epoch.
 
 **In the DPoW, miner nodes are elected randomly at the start of a block epoch for later blocks from the node IDs of the Kademlia style hash table.**  They are sent a randomized code that they will need to respond to correctly to acknowledge they exist within a set period of time. In order to avoid a scramble at the beginning of each block epoch, nodes are elected in advance for an as-yet-undecided amount of blocks, perhaps six.  **If nodes are offline and do not respond, additional nodes are selected until they reach X percentage of the network. A pool of backup nodes is designated as nodes are expected to go offline during the process and diminish their pools. This will allow new entities to be swapped in as needed.**
 
@@ -439,7 +439,7 @@ The winning mining pool collects the coins and transaction fees and then the min
 
 It is also worth considering a reputation system for miners that allows reliable miners to be called on more regularly. However, any such system must be carefully weighted so as not to allow the same miners to consistently drive all traffic. Trust would be defined algorithmically, for example based on whether the node responded to all requests throughout time, whether it ever had malformed packets or out of date software, whether its binaries have ever been altered from standard hashes, the node&#39;s speed, dropped packets, etc. This idea is outlined in more detail in the Networking section. Nodes could be less likely to receive requests if they have issues or a low reputation rating or even blacklisted if they have repeated issues such as compromised software, altered binaries, etc.
 
-**Lastly, blockchains can grow very large, so how would a small client like a cell phone store the whole blockchain? The answer is none of them would need to at all. Instead, clients need to keep only a current subset of the most recent transactions and the rest of the blockchain is sharded up and replicated in pieces to all clients, so that each client is responsible for storing a small portion of the historical blockchain. ** If nodes drop out or go offline a shard may be replicating temporarily from an existing node to maintain a proper percentage of the chain to avoid losing any piece of it. Because other nodes contain redundant instances of that particular shard, all of the instances would have to be destroyed to destroy that part of the blockchain, which makes the protocol space efficient and able to run and be stored on a mobile device. In addition, the blockchains could be backed up by anyone or by a backup company to keep the system safe in the case of total disaster and to allow for restoration later, while providing evidence of their completeness. Lookups would use a DHT to find which nodes currently hold the necessary part of the blockchain for a lookup, should an old transaction need to be verified, and multiple clients would be checked to ensure accuracy.
+**Lastly, blockchains can grow very large. So, how would a small client, like a cell phone, store the whole blockchain? The answer is none of them would need to at all. Instead, clients need to keep only a current subset of the most recent transactions and the rest of the blockchain is sharded up and replicated in pieces to all clients, so that each client is responsible for storing a small portion of the historical blockchain. ** If nodes drop out or go offline a shard may be replicating temporarily from an existing node to maintain a proper percentage of the chain to avoid losing any piece of it. Because other nodes contain redundant instances of that particular shard, all of the instances would have to be destroyed to destroy that part of the blockchain, which makes the protocol space efficient and able to run and be stored on a mobile device. In addition, the blockchains could be backed up by anyone or by a backup company to keep the system safe in the case of total disaster and to allow for restoration later, while providing evidence of their completeness. Lookups would use a DHT to find which nodes currently hold the necessary part of the blockchain for a lookup, should an old transaction need to be verified, and multiple clients would be checked to ensure accuracy.
 
 **That means that the Distributed Proof of Work delivers the following in a single platform:**
 
@@ -484,7 +484,7 @@ Within the network, a block of data, a value, can also be associated with a bina
 
 A node needing a value searches for it at the nodes it considers closest to the key. A node needing to save a value stores it at the nodes it considers closest to the key associated with the value.
 
-NodeID
+**NodeID**
 
 NodeIDs are binary numbers of length B = 160 bits. In basic Kademlia, each node chooses its own ID by some unspecified quasi-random procedure. It is important that nodeIDs be uniformly distributed; the network design relies upon this.
 
@@ -509,7 +509,7 @@ The buckets are organized by the distance between the node and the contacts in t
 Given the very large address space, this means that bucket zero has only one possible member, the key which differs from the nodeID only in the high order bit, and for all practical purposes is never populated, except perhaps in testing. On the other hand, if nodeIDs are evenly distributed, it is very likely that half of all nodes will lie in the range of bucket B-1 = 159.
 Bucket Size
 
-Contacts
+**Contacts**
 
 A contact is at least a triple:
 
@@ -525,7 +525,7 @@ Lastly, for the purposes of secure end-to-end messaging communication, each node
 
 Now that we have a general understanding of the essential Kademlia concepts, which you can dig further into at the design site, we can shift to how to enhance and improve the basically sound framework provided by the authors.
 
-Much of our thinking on how to improve the networking of the DD platform comes from the excellent research paper called &quot; [S/Kademlia: A Practical Approach Towards Secure Key Based Routing](http://www.tm.uka.de/doc/SKademlia_2007.pdf).&quot; The authors go a long way to creating a secure version of Kademlia, outlining a number of attacks (briefly summarized below), as well as excellent though incomplete solutions to these attacks. However, this project deviates from the thinking of the paper in one key aspect:
+Much of our thinking on how to improve the networking of the DD platform comes from the excellent research paper called &quot;[S/Kademlia: A Practical Approach Towards Secure Key Based Routing](http://www.tm.uka.de/doc/SKademlia_2007.pdf).&quot; The authors go a long way to creating a secure version of Kademlia, outlining a number of attacks (briefly summarized below), as well as excellent though incomplete solutions to these attacks. However, this project deviates from the thinking of the paper in one key aspect:
 
 - Defeating/Impeding Sybil attacks
 
@@ -553,7 +553,7 @@ Node impersonation is where a NodeID attempts to impersonate the ID of another n
 
 **Eclipse Attacks**
 
-This attack attempts to put malicious nodes on the network to force traffic flow through them and cut off or hide good nodes from the network **.**
+This attack attempts to put malicious nodes on the network to force traffic flow through them and cut off or hide good nodes from the network.
 
 **Churn Attacks**
 
@@ -591,7 +591,7 @@ Now that we have outlined various attacks on the system, let&#39;s look at ways 
 
 Lastly, because new nodes cannot be very efficiently evaluated beyond software version, IP address reputation, etc, the Cicada platform includes a grace period for new nodes.
 
-The ratings for nodes must be continual. As Kohnen notes in the TrustedKAD paper, it is necessary to continually &quot;rate the behavior of a node and to avoid interaction with it if it does not behave correctly,&quot;
+The ratings for nodes must be continual. As Kohnen notes in the TrustedKAD paper, it is necessary to continually &quot;rate the behavior of a node and to avoid interaction with it if it does not behave correctly.&quot;
 
 The problem of where to store the rating information could be solved by storing it in the DHT and including a method to ensure that no node is able to store its own reputation information, even if that information is a copy, to prevent manipulation of that information. A second option is to again use a fast moving blockchain (one with less then ten minute blocks) as a trust mechanism for storing the information. Since the Cicada platform uses sharded up chains to store them in the small space of local clients, a flag would again be needed to ensure a node does not store its own reputation information.
 
@@ -617,7 +617,7 @@ A fully end-to-end encrypted communication system for establishing peer-to-peer 
 
 **We can use David Chaum&#39;s ** [**PrivaTegrity**](https://eprint.iacr.org/2016/008.pdf) ** as a template here. He proposes a scalable mixnet called cMix to provide unlinkability and secure communication. In the Cicada network, nodes are randomly drafted into MixNets, which differs from Chaum&#39;s design which relies on centrally trusted servers.**
 
-**Chaum also provides a novel but controversial universal decryption scheme. Universal decryption keys are generated and sharded up among nine different server farms in different geographies. If all nine servers agree, the sharded key is reconnected and we are able to decrypt communications on the network.** [This is to prevent something &quot;totally evil&quot; from being hidden](https://www.wired.com/2016/01/david-chaum-father-of-online-anonymity-plan-to-end-the-crypto-wars/). Once the keys are used, they are destroyed automatically, and new ones are created and sharded up again, so that the nine servers must again universally agree to decryption.
+**Chaum also provides a novel but controversial universal decryption scheme. Universal decryption keys are generated and sharded up among nine different server farms in different geographical areas. If all nine servers agree, the sharded key is reconnected and we are able to decrypt communications on the network.** [This is to prevent something &quot;totally evil&quot; from being hidden](https://www.wired.com/2016/01/david-chaum-father-of-online-anonymity-plan-to-end-the-crypto-wars/). Once the keys are used, they are destroyed automatically, and new ones are created and sharded up again, so that the nine servers must again universally agree to decryption.
 
 **Chaum&#39;s proposal sparked fierce debate, because there are some obvious problems with this methodology. For example, the nine systems can collude, or if they are actively hostile and cannot agree then nothing can be done, despite the vast majority of users agreeing to the proposal.**
 
@@ -695,7 +695,7 @@ The system must provide end-to-end integrity for all votes cast, while preservin
 
 **Vote Suggestion System**
 
-A system allows for suggestions on how to vote. Based on a question survey, such as demonstrated by the &quot; [I Side With](https://www.isidewith.com/)&quot; website, a set of basic rules can be created about how a person would particularly vote. The system would then examine the law XML and come to a conclusion, marking the document/proposal/bill/rule change with green/yellow/red based on how likely you are to agree with the majority of the provisions. This could eventually lead to an auto-voting system.
+A system allows for suggestions on how to vote. Based on a question survey, such as demonstrated by the &quot;[I Side With](https://www.isidewith.com/)&quot; website, a set of basic rules can be created about how a person would particularly vote. The system would then examine the law XML and come to a conclusion, marking the document/proposal/bill/rule change with green/yellow/red based on how likely you are to agree with the majority of the provisions. This could eventually lead to an auto-voting system.
 
 **Auto-Voting system**
 
@@ -829,7 +829,7 @@ Other technologies, such as revocable biometrics and biocryptics, exist in resea
 
 Some technologies such as AI are just starting to evolve. Who knows what breakthroughs AI research will bring? The field is currently going through a Cambrian explosion of development, receiving massive amounts of investment that will only accelerate this trajectory.
 
-Will CPU- and memory-intensive AI calculations ever be able to run on a distributed platform? Probably, but who can say when? Certainly the project will benefit from the rapid developments in this sphere in the coming years.
+Will CPU and memory-intensive AI calculations ever be able to run on a distributed platform? Probably, but who can say when? Certainly the project will benefit from the rapid developments in this sphere in the coming years.
 
 Lastly, it&#39;s also likely that some of the technology necessary to create this solution simply does not currently exist in any form, and will require dependent technology to be developed first. For example, nobody could possibly have conceived of the internet until computers were invented.
 
