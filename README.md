@@ -292,9 +292,7 @@ Again, all of these present special problems and will not be considered further 
 
   ![alt text](https://github.com/the-laughing-monkey/cicada-platform/blob/master/images/Enrollment-1.jpg "Proposed Enrollment into the System")
  
-# Outline of Proposed Ste
-
-# ps for Enrollment in the System
+# Outline of Proposed Steps for Enrollment in the System
 
 1. Enrollment software boots an encrypted microkernel that checks for live network connectivity through a series of tests, using randomly generated secret information, challenge/response, pings, time checks against the blockchain, and TLS-connected NTP servers
 2. After ensuring network connectivity, the microkernel checks the software blockchain to ensure its binary hash matches, as well as the correct, current protocol version, and any other checks deemed necessary to ensure the system is running the latest, unmodified code
