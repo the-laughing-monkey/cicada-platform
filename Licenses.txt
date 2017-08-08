@@ -16,7 +16,7 @@ provided that the following conditions are met:
    must use the GPL or BSD license.  It must also include a copy of this entire 
    text without modification, as well as the following notice to users:  
 
-THIS SOFTWARE IS PROVIDED BY Daniel Jeffries ''AS IS'' AND ANY
+THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY
 EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
