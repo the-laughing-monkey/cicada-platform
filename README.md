@@ -6,6 +6,11 @@
 
 Version 2016.28.11.GA.003
 
+## Conversation
+You can join our conversation on:
+- [Slack Workspace](https://join.slack.com/t/cicada-platform/shared_invite/MjM3NjUxODcyMTM1LTE1MDQ2MzkxNTYtNzQ4YzBhZDA1Mw)
+- [DecStack Channel](https://hub.decstack.com/decstack/channels/cicada)
+
 # Abstract
 
 This paper outlines a revolutionary, open source, decentralized application platform (DAPP) along with its first major application, a distributed direct democracy (DDD). To create something scalable enough to run an entire nation with no representatives, we created two cutting edge technologies to serve as the foundation of the platform:
