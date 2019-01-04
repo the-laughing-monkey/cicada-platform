@@ -36,6 +36,6 @@ The Cicada platform delivers the following features:
 
 Cicada promises to give us the robust, secure, privacy-powered Internet we were always promised. It has the power to return control back to the people, prevent corruption through automated checks and balances, increase transparency, and dramatically simplify everything from security to eCommerce, all while paying you to run it.
 
-[The white paper](https://github.com/the-laughing-monkey/cicada-platform/blob/master/README.md is the first step on the journey. The challenges behind the undertaking are massive, but the potential rewards are so vast that they simply can&#39;t be ignored.
+[The white paper](https://github.com/the-laughing-monkey/cicada-platform/blob/master/README.md) is the first step on the journey. The challenges behind the undertaking are massive, but the potential rewards are so vast that they simply can&#39;t be ignored.
 
 Imagine this: The next time there&#39;s an Arab Spring, instead of trading one dictator for another,  **they simply replace their leaders with code.**
