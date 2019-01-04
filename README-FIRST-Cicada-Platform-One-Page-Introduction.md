@@ -12,9 +12,9 @@ The inspiration for the idea was threefold.
 
 The first seeds came from author Daniel Jeffries&#39; work on [_The Jasmine Wars_](http://meuploads.com/the-jasmine-wars/), an epic saga of family, love, and war where China transforms into the world&#39;s first direct democracy, running on a highly advanced, artificially intelligent decentralized application platform. Despite the fictional setting, it turns out that not only is this technology possible, many of the building blocks already exist.
 
-The second inspiration came from the hard realization that technology has turned against us. The slightest youthful indiscretion can haunt a person online forever because someone captured it on a cell phone camera. Companies demand more and more of our data but can&#39;t it safe. People are tracked down and harassed in the physical world for things they said on social media. The Internet promised us a more open and transparent world, but instead we are tracked at every turn.
+The second inspiration came from the hard realization that technology has turned against us. The slightest youthful indiscretion can haunt a person online forever because someone captured it on a cell phone camera. Companies demand more and more of our data but can&#39;t keep it safe. People are tracked down and harassed in the physical world for things they said on social media. The Internet promised us a more open and transparent world, but instead we are tracked at every turn.
 
-The second inspiration was the Arab Spring. After the Arab people rose up and threw off decades of brutal repression, they wound up right back where they started, with one dictator swapped out for another.
+The third inspiration was the Arab Spring. After the Arab people rose up and threw off decades of brutal repression, they wound up right back where they started, with one dictator swapped out for another.
 
 Cicada holds the potential to break this vicious cycle forever.
 
@@ -36,6 +36,6 @@ The Cicada platform delivers the following features:
 
 Cicada promises to give us the robust, secure, privacy-powered Internet we were always promised. It has the power to return control back to the people, prevent corruption through automated checks and balances, increase transparency, and dramatically simplify everything from security to eCommerce, all while paying you to run it.
 
-[The white paper](https://github.com/the-laughing-monkey/cicada-platform/blob/master/README.md is the first step on the journey. The challenges behind the undertaking are massive, but the potential rewards are so vast that they simply can&#39;t be ignored.
+[The white paper](https://github.com/the-laughing-monkey/cicada-platform/blob/master/README.md) is the first step on the journey. The challenges behind the undertaking are massive, but the potential rewards are so vast that they simply can&#39;t be ignored.
 
 Imagine this: The next time there&#39;s an Arab Spring, instead of trading one dictator for another,  **they simply replace their leaders with code.**
